@@ -29,7 +29,7 @@ app.use(cors())
 app.use(compression())
 
 // static files uploading
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use('/static', express.static(path.join(__dirname, 'static')))
 
 // Setting Express Router endpoints
 app.use('/', productRoutes)

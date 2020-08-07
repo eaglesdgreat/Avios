@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+const logo = require('./../static/sponge.jpg')
+
 const ProductSchema = new mongoose.Schema({
   product_name: {
     type: String,
@@ -14,7 +16,13 @@ const ProductSchema = new mongoose.Schema({
     size: { type: String, trim: true },
     color: { type: String, trim: true },
     quantity: { type: String, trim: true },
-    images: [String],
+    images: [
+      {
+        type: String,
+        default: logo,
+        trim: true,
+      }
+    ],
     price: { type: String, trim: true },
   }],
   date_uploaded: {
