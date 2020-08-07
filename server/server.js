@@ -6,6 +6,8 @@ const compression = require('compression')
 const path = require('path')
 
 const config = require('./config')
+const productRoutes = require('./routes/product.routes')
+const errorHandler = require('./error.handler')
 
 // initialize express app
 const app = express()
@@ -30,7 +32,7 @@ app.use(compression())
 app.use('/public', express.static(path.join(__dirname, 'public')))
 
 // Setting Express Router endpoints
-// app.use()
+app.use('/', productRoutes)
 
 // Loading html files
 app.get('/', (req, res) => {
@@ -38,7 +40,9 @@ app.get('/', (req, res) => {
 })
 
 // Express Error Handler
+app.use(errorHandler)
 
+// listinging and loading server app
 app.listen(config.port, (err) => {
   if (err) { console.log(err) }
   console.log(`App server running on port ${config.port}`)
